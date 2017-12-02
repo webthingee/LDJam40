@@ -11,6 +11,8 @@ public class HealthCtrl : MonoBehaviour
     [SerializeField] float radSpeed = 1;
     [SerializeField] float radLoadValue = 0;
 
+    GameManager gm;
+
     public float RadLoadValueMax {
         get { return radLoadMax; }
         set { radLoadMax = value; }
@@ -28,7 +30,8 @@ public class HealthCtrl : MonoBehaviour
         radLoadValue += _value;
         if (radLoadValue < 0) { 
             radLoadValue = 0;
-        } 
+        }
+        GameObject.Find("Master Manager").GetComponent<GameManager>().tookHit = true;
     }
 
     public void RadsSpeed(float _value)
@@ -41,7 +44,8 @@ public class HealthCtrl : MonoBehaviour
         if (radSpeed > radSpeedMax)
         {
             radSpeed = radSpeedMax;
-        }      
+        }
+        GameObject.Find("Master Manager").GetComponent<GameManager>().tookHit = true;
     }
 
     void Start ()

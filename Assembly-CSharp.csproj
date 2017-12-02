@@ -62,6 +62,8 @@
      <Compile Include="Assets\Scripts\PlayerCtrl.cs" />
      <Compile Include="Assets\Scripts\RadEffectCtrl.cs" />
      <Compile Include="Assets\Scripts\RescueAction.cs" />
+     <Compile Include="Assets\Scripts\SelfDestroy.cs" />
+     <Compile Include="Assets\Scripts\SpawnCtrl.cs" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/Users/seanlange/Projects/unity/GameJams/LDJam40/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
