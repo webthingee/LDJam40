@@ -7,24 +7,15 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     // Rad Load
-	public Text radLoadText;
-    public float radLoadMax;
-	public float radLoadValue;
+	public Text radLoadText;	
+	private float radLoadValue;
 	
-	void Start () 
-	{
-		radLoadValue = radLoadMax;
-		radLoadText.text = radLoadValue.ToString();
-	}
+	public GameObject player;
 	
 	void Update () 
 	{
-		radLoadValue -= Time.deltaTime;
+		radLoadValue = player.GetComponent<HealthCtrl>().radLoadValue;
 		radLoadText.text = Mathf.FloorToInt(radLoadValue).ToString();
 	}
 
-	void GameTimer ()
-	{
-
-	}
 }

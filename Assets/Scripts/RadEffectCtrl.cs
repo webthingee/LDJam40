@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class RadEffectCtrl : MonoBehaviour {
 
+	void Start()
+	{
+
+    }
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		GameObject.Find("Master Manager").GetComponent<GameManager>().radLoadValue += 99;
-		Debug.Log("Master");
+		Debug.Log(other.name);
+		GameObject.Find("Player").GetComponent<HealthCtrl>().radLoadValue += 10;
 	}
 	
 }

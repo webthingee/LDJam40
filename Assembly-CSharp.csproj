@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\CameraResolution.cs" />
      <Compile Include="Assets\Scripts\CharacterController2D.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\HealthCtrl.cs" />
      <Compile Include="Assets\Scripts\PlayerCtrl.cs" />
      <Compile Include="Assets\Scripts\RadEffectCtrl.cs" />
      <Compile Include="Assets\Scripts\SetOrtho.cs" />
