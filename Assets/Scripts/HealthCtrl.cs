@@ -14,8 +14,7 @@ public class HealthCtrl : MonoBehaviour
         set { radLoadValue += value; }
     }
     
-    public void AddRads (float _value)
-    {
+    public void AddRads (float _value) {
         radLoadValue += _value;
         if (radLoadValue < 0) { 
             radLoadValue = 0;
@@ -32,6 +31,7 @@ public class HealthCtrl : MonoBehaviour
         if (radLoadValue >= radLoadMax)
         {
             Debug.Log("DEAD");
+            GameObject.Find("Master Manager").GetComponent<GameManager>().GameReload();
         }
     }
 }

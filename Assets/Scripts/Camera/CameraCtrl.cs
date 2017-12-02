@@ -34,6 +34,8 @@ public class CameraCtrl : MonoBehaviour {
 
     void Update () 
 	{
+		PlayerStatusCheck();
+
 		if (player.transform.eulerAngles.y == 0) {
 			mainCamera.position = new Vector3 (
 				Mathf.Lerp(mainCamera.position.x, player.transform.position.x + cameraOffset.x, horizontalSpeed * Time.deltaTime),
@@ -48,4 +50,13 @@ public class CameraCtrl : MonoBehaviour {
                 cameraOffset.z);
         }
 	}
+
+    void PlayerStatusCheck()
+    {
+        if (player.transform.position.y <= mainCamera.position.y + -10)
+        {
+            Debug.Log("DEAD");
+            GameObject.Find("Master Manager").GetComponent<GameManager>().GameReload();
+        }
+    }
 }
