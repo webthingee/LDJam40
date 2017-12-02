@@ -10,8 +10,6 @@ public class PlayerCtrl : MonoBehaviour
 	public float walkSpeed = 6f;
 	public float jumpSpeed = 8f;
 	public float gravity = 20f;
-
-	[Header("Private")]
 	[SerializeField] bool isGrounded;
 	[SerializeField] bool isJumping;
 
@@ -51,15 +49,10 @@ public class PlayerCtrl : MonoBehaviour
 			canDoubleJump = false;
 		}
 	}
-
-    void Start()
-    {
-
-    }
 	
 	void Update () 
 	{
-		DebugPane();
+		//DebugPane();
 
 		if (!hasWallJumped)
 		{
