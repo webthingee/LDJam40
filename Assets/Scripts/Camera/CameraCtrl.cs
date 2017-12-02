@@ -38,14 +38,14 @@ public class CameraCtrl : MonoBehaviour {
 
 		if (player.transform.eulerAngles.y == 0) {
 			mainCamera.position = new Vector3 (
-				Mathf.Lerp(mainCamera.position.x, player.transform.position.x + cameraOffset.x, horizontalSpeed * Time.deltaTime),
+				Mathf.Lerp(mainCamera.position.x, player.transform.position.x - cameraOffset.x, horizontalSpeed * Time.deltaTime),
                 Mathf.Lerp(mainCamera.position.y, player.transform.position.y + cameraOffset.y, verticalSpeed * Time.deltaTime),
 				cameraOffset.z);
         }
 		else
 		{
             mainCamera.position = new Vector3(
-                Mathf.Lerp(mainCamera.position.x, player.transform.position.x - cameraOffset.x, horizontalSpeed * Time.deltaTime),
+                Mathf.Lerp(mainCamera.position.x, player.transform.position.x + cameraOffset.x, horizontalSpeed * Time.deltaTime),
                 Mathf.Lerp(mainCamera.position.y, player.transform.position.y + cameraOffset.y, verticalSpeed * Time.deltaTime),
                 cameraOffset.z);
         }
