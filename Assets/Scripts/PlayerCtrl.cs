@@ -11,20 +11,23 @@ public class PlayerCtrl : MonoBehaviour
 	public float jumpSpeed = 8f;
 	public float gravity = 20f;
 
+	[Header("Private")]
 	[SerializeField] bool isGrounded;
 	[SerializeField] bool isJumping;
 
-	[Header("Abilities")]
+	[Header("Ability: Double Jump")]
 	public bool canDoubleJump;
 	public float doubleJumpSpeed = 6f;
 	[SerializeField] bool hasDoubleJumped;
-	
+
+    [Header("Ability: Wall Jump")]
 	public bool canWallJump;
 	public Vector2 wallJumpAmount = new Vector2(0.5f, 0.5f);
 	public float wallJumpWait = 0.5f;
 	[SerializeField] bool hasWallJumped;
 	[SerializeField] bool lastJumpWasLeft;
-	
+
+    [Header("Ability: Wall Run")]	
 	public bool canWallRun;
 	public float wallRunAmount;
 	[SerializeField] bool isWallRunning;
@@ -48,7 +51,7 @@ public class PlayerCtrl : MonoBehaviour
 			canDoubleJump = false;
 		}
 	}
-	
+
     void Start()
     {
 
