@@ -11,8 +11,10 @@ public class RescueAction : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name);
+        Debug.Log(other.name + " hits " + this.name);
+
         GameObject.Find("Player").GetComponent<MissionCtrl>().AddRescue(1);
+
         Destroy(this.gameObject);
     }
 }

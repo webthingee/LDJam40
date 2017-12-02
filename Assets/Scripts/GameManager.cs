@@ -40,7 +40,16 @@ public class GameManager : MonoBehaviour {
 	{
         radValue = player.GetComponent<HealthCtrl>().RadLoadValue;
         radValueText.text = Mathf.FloorToInt(radValue).ToString() + " / " + player.GetComponent<HealthCtrl>().RadLoadValueMax;
-	}
+
+        float radSpeed = player.GetComponent<HealthCtrl>().RadSpeedValue;
+		
+		if (radSpeed > 1)
+		{
+            radValueText.color = Color.red;
+        } else {
+			radValueText.color = Color.black;
+		}
+    }
 
     void UpdateRescueValues()
     {

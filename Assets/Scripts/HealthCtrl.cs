@@ -6,6 +6,8 @@ public class HealthCtrl : MonoBehaviour
 {
     // Rad Load
     [SerializeField] float radLoadMax;
+    [SerializeField] float radSpeedMax = 5;
+    [SerializeField] float radSpeedMin = 1;
     [SerializeField] float radSpeed = 1;
     [SerializeField] float radLoadValue = 0;
 
@@ -17,12 +19,29 @@ public class HealthCtrl : MonoBehaviour
         get { return radLoadValue; }
         set { radLoadValue = value; }
     }
-    
+    public float RadSpeedValue {
+        get { return radSpeed; }
+        set { radSpeed = value; }
+    }
+
     public void AddRads (float _value) {
         radLoadValue += _value;
         if (radLoadValue < 0) { 
             radLoadValue = 0;
         } 
+    }
+
+    public void RadsSpeed(float _value)
+    {
+        radSpeed = _value;
+        if (radSpeed < radSpeedMin)
+        {
+            radSpeed = radSpeedMin;
+        }
+        if (radSpeed > radSpeedMax)
+        {
+            radSpeed = radSpeedMax;
+        }      
     }
 
     void Start ()
