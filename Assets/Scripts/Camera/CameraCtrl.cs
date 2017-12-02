@@ -33,7 +33,7 @@ public class CameraCtrl : MonoBehaviour {
 	}
 
     void Update () 
-	{
+	{		
 		PlayerStatusCheck();
 
 		if (player.transform.eulerAngles.y == 0) {

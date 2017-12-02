@@ -35,11 +35,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4323630300209742}
+  - component: {fileID: 114725425730570664}
+  - component: {fileID: 114358402361787590}
+  - component: {fileID: 114937943581617422}
   - component: {fileID: 61267249416947016}
   - component: {fileID: 50082952479196622}
   - component: {fileID: 114337099754168040}
-  - component: {fileID: 114725425730570664}
-  - component: {fileID: 114358402361787590}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -265,6 +266,19 @@ MonoBehaviour:
   canWallRun: 0
   wallRunAmount: 0
   isWallRunning: 0
+--- !u!114 &114937943581617422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437657833563964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02a9ef514b064e9ba749cb63a7f0055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rescueValueMax: 3
+  rescueValue: 0
 --- !u!212 &212812112695391984
 SpriteRenderer:
   m_ObjectHideFlags: 1

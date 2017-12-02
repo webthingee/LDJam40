@@ -5,13 +5,17 @@ using UnityEngine;
 public class HealthCtrl : MonoBehaviour 
 {
     // Rad Load
-    public float radLoadMax;
-    public float radSpeed = 1;
+    [SerializeField] float radLoadMax;
+    [SerializeField] float radSpeed = 1;
     [SerializeField] float radLoadValue = 0;
 
+    public float RadLoadValueMax {
+        get { return radLoadMax; }
+        set { radLoadMax = value; }
+    }
     public float RadLoadValue {
         get { return radLoadValue; }
-        set { radLoadValue += value; }
+        set { radLoadValue = value; }
     }
     
     public void AddRads (float _value) {
