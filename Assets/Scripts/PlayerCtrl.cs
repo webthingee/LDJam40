@@ -102,11 +102,11 @@ public class PlayerCtrl : MonoBehaviour
         // direction management
         if (moveDirection.x < 0)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
+            transform.eulerAngles = new Vector3(0, 0, 0);
         } 
 		else if (moveDirection.x > 0)
 		{
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
 		// fall rate
@@ -147,14 +147,14 @@ public class PlayerCtrl : MonoBehaviour
 					{
 						moveDirection.x = jumpSpeed * wallJumpAmount.x;
 						moveDirection.y = jumpSpeed * wallJumpAmount.y;
-						transform.eulerAngles = new Vector3(0, 180, 0);
+						transform.eulerAngles = new Vector3(0, 0, 0);
 						lastJumpWasLeft = false;
 					} 
 					else if (moveDirection.x > 0)
 					{
 						moveDirection.x = -jumpSpeed * wallJumpAmount.x;
 						moveDirection.y = jumpSpeed * wallJumpAmount.y;
-						transform.eulerAngles = new Vector3(0, 0, 0);
+						transform.eulerAngles = new Vector3(0, 180, 0);
 						lastJumpWasLeft = true;
 					}
 

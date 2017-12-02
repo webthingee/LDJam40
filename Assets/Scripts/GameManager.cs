@@ -8,10 +8,22 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     // Rad Value
-	public Text radValueText;	
-	private float radValue;
+    public Text radValueText;
+    private float radValue;    
+	
+	// Rad Value 1
+    public Text radValueText1;
+    private float radValue1;
 
-    // Rescue Value
+    // Rad Value 2
+    public Text radValueText2;
+    private float radValue2;
+
+    // Rad Value 3
+    public Text radValueText3;
+    private float radValue3;
+
+    // Rescue Value 4
     public Text rescueValueText;
     private float rescueValue;
 

@@ -10,6 +10,7 @@ public class HealthCtrl : MonoBehaviour
     [SerializeField] float radSpeedMin = 1;
     [SerializeField] float radSpeed = 1;
     [SerializeField] float radLoadValue = 0;
+    public bool isMainCharacter;
 
     GameManager gm;
 
@@ -57,8 +58,15 @@ public class HealthCtrl : MonoBehaviour
         radLoadValue += Time.deltaTime * radSpeed;
         if (radLoadValue >= radLoadMax)
         {
-            Debug.Log("DEAD");
-            GameObject.Find("Master Manager").GetComponent<GameManager>().GameReload();
+            if (isMainCharacter)
+            {
+                Debug.Log("DEAD");
+                GameObject.Find("Master Manager").GetComponent<GameManager>().GameReload();
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
