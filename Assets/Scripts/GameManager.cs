@@ -14,8 +14,13 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () 
 	{
-		radLoadValue = player.GetComponent<HealthCtrl>().RadLoadValue;
-		radLoadText.text = Mathf.FloorToInt(radLoadValue).ToString();
+		UpdateRadLevels();
+	}
+
+	void UpdateRadLevels ()
+	{
+        radLoadValue = player.GetComponent<HealthCtrl>().RadLoadValue;
+        radLoadText.text = Mathf.FloorToInt(radLoadValue).ToString() + " / 100";
 	}
 
 }
