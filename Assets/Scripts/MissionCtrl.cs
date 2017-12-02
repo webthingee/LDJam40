@@ -27,6 +27,7 @@ public class MissionCtrl : MonoBehaviour
 
     void Start()
     {
+		
     }
 
     void RescueValueCheck ()

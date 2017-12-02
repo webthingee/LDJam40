@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Prime31;
 
 public class PlayerCtrl : MonoBehaviour 
@@ -38,6 +39,16 @@ public class PlayerCtrl : MonoBehaviour
 		charCtrl2D = GetComponent<CharacterController2D>();
     }
 
+	void DebugPane ()
+	{
+        if (GameObject.Find("Dbl Jump").GetComponent<Toggle>().isOn)
+        {
+            canDoubleJump = true;
+        } else {
+			canDoubleJump = false;
+		}
+	}
+	
     void Start()
     {
 
@@ -45,6 +56,8 @@ public class PlayerCtrl : MonoBehaviour
 	
 	void Update () 
 	{
+		DebugPane();
+
 		if (!hasWallJumped)
 		{
 			moveDirection.x = Input.GetAxis("Horizontal");
