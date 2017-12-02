@@ -6,15 +6,31 @@ public class HealthCtrl : MonoBehaviour
 {
     // Rad Load
     public float radLoadMax;
-    public float radLoadValue;
+    [SerializeField] float radLoadValue = 0;
+
+    public float RadLoadValue {
+        get { return radLoadValue; }
+        set { radLoadValue += value; }
+    }
+    
+    public void AddRads (float _value)
+    {
+        radLoadValue += _value;
+        if (radLoadValue < 0) { 
+            radLoadValue = 0;
+        } 
+    }
 
     void Start ()
     {
-        radLoadValue = radLoadMax;
     }
 
     void Update ()
     {
-        radLoadValue -= Time.deltaTime;
+        radLoadValue += Time.deltaTime;
+        if (radLoadValue == radLoadMax)
+        {
+            Debug.Log("DEAD");
+        }
     }
 }

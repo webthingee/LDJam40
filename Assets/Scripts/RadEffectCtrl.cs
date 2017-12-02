@@ -12,7 +12,9 @@ public class RadEffectCtrl : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		Debug.Log(other.name);
-		GameObject.Find("Player").GetComponent<HealthCtrl>().radLoadValue += 10;
+		GameObject.Find("Player").GetComponent<HealthCtrl>().AddRads(-10);
+		Destroy(this.gameObject);
+
 	}
 	
 }
