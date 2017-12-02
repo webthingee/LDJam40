@@ -54,7 +54,9 @@
      <Compile Include="Assets\Scripts\CameraCtrl.cs" />
      <Compile Include="Assets\Scripts\CameraResolution.cs" />
      <Compile Include="Assets\Scripts\CharacterController2D.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\PlayerCtrl.cs" />
+     <Compile Include="Assets\Scripts\RadEffectCtrl.cs" />
      <Compile Include="Assets\Scripts\SetOrtho.cs" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/Users/seanlange/Projects/unity/GameJams/LDJam40/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
