@@ -24,7 +24,10 @@ public class GameManager : MonoBehaviour {
 	void Start ()
 	{
 		overlay.SetActive(false);
-		GameStop();
+        overlay.transform.GetChild(0).gameObject.SetActive(false);
+        overlay.transform.GetChild(1).gameObject.SetActive(false);
+
+        GameStop();
 	}
 
 	void Update () 
@@ -45,25 +48,31 @@ public class GameManager : MonoBehaviour {
         rescueValueText.text = Mathf.FloorToInt(rescueValue).ToString() + " / " + player.GetComponent<MissionCtrl>().RescueValueMax;
     }
 
-	public void GameStop () {
-		startBtn.SetActive(true);
+	public void GameStop () 
+	{
+		overlay.SetActive(true);
+        overlay.transform.GetChild(0).gameObject.SetActive(true); // start
+        
 		Time.timeScale = 0;
 	}
 
-	void GameStart () {
-        startBtn.SetActive(false);
+	public void GameStart () 
+	{
+		Time.timeScale = 1;
+		
 		overlay.SetActive(false);
+        overlay.transform.GetChild(1).gameObject.SetActive(false);
+        overlay.transform.GetChild(0).gameObject.SetActive(false);
 
-		player.GetComponent<MissionCtrl>().RescueValue = 0;
-
-        Time.timeScale = 1;
+        player.GetComponent<MissionCtrl>().RescueValue = 0;
 	}
 	
 	public void GameWin ()
 	{
 		overlay.SetActive(true);
-		Time.timeScale = 0.05f;
-		Invoke("GameReload", 0.2f);
+		overlay.transform.GetChild(1).gameObject.SetActive(true); // win
+		
+		Time.timeScale = 0f;
     }
 
 	public void GameReload ()

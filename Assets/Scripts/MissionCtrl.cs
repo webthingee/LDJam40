@@ -33,7 +33,7 @@ public class MissionCtrl : MonoBehaviour
     {
         if (rescueValue >= rescueValueMax)
         {
-            Debug.Log("WIN");
+            Debug.Log("Rescue Value WIN");
 			GameObject.Find("Master Manager").GetComponent<GameManager>().GameWin();        
 		}
 		else
