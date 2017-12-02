@@ -10,7 +10,7 @@ public class CameraCtrl : MonoBehaviour {
 	public float verticalSpeed = 2f;
 
 	Transform mainCamera;
-	PlayerCtrl playerCtrl;
+	//PlayerCtrl playerCtrl;
 
 	void Awake () 
 	{
@@ -19,7 +19,7 @@ public class CameraCtrl : MonoBehaviour {
 			player = GameObject.FindGameObjectWithTag("Player");
 		}
 
-		playerCtrl = player.GetComponent<PlayerCtrl>();	
+		//playerCtrl = player.GetComponent<PlayerCtrl>();	
 		mainCamera = Camera.main.transform;
 		mainCamera.position = new Vector3(
 			player.transform.position.x + cameraOffset.x,
