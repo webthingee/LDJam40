@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\HealthCtrl.cs" />
      <Compile Include="Assets\Scripts\HUDCtrl.cs" />
      <Compile Include="Assets\Scripts\MissionCtrl.cs" />
+     <Compile Include="Assets\Scripts\PlatformCtrl.cs" />
      <Compile Include="Assets\Scripts\PlayerCtrl.cs" />
      <Compile Include="Assets\Scripts\RadEffectCtrl.cs" />
      <Compile Include="Assets\Scripts\RescueAction.cs" />

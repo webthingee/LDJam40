@@ -64,6 +64,7 @@ public class PlayerCtrl : MonoBehaviour
 		{
 			// is on the ground
 			moveDirection.y = 0;
+			
 			isJumping = false;
 			hasDoubleJumped = false;
 
@@ -72,6 +73,8 @@ public class PlayerCtrl : MonoBehaviour
 			{
 				moveDirection.y = jumpSpeed;
 				isJumping = true;
+
+				isWallRunning = true;
 			}
 		} 
 		else 
@@ -125,7 +128,17 @@ public class PlayerCtrl : MonoBehaviour
 
 		if (flags.left || flags.right)
 		{
-            // Ability : Wall Jump
+            // Ability : Wall Run
+			if (canWallRun)
+			{
+				if (Input.GetAxis("Vertical") > 0 && isWallRunning)
+				{
+					moveDirection.y = jumpSpeed / wallJumpAmount.y;
+					StartCoroutine(WallRunWaiter(0.05f));
+				}
+			}
+			
+			// Ability : Wall Jump
 			if (canWallJump)
             {
 				if (Input.GetButtonDown("Jump") && !hasWallJumped && !isGrounded)
@@ -156,5 +169,12 @@ public class PlayerCtrl : MonoBehaviour
 		hasWallJumped = true;
 		yield return new WaitForSeconds(_waitTime);
 		hasWallJumped = false;
+	}
+
+	IEnumerator WallRunWaiter (float _waitTime)
+	{
+		isWallRunning = true;
+		yield return new WaitForSeconds(_waitTime);
+		isWallRunning = false;
 	}
 }
