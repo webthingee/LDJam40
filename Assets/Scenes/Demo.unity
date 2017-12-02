@@ -1130,7 +1130,7 @@ GameObject:
   - component: {fileID: 1653590918}
   - component: {fileID: 1653590917}
   m_Layer: 5
-  m_Name: Rad Level Value (1)
+  m_Name: Rad Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1245,16 +1245,3 @@ GameObject:
   m_PrefabParentObject: {fileID: 1437657833563964, guid: 88655a7d83bff490b91efde603b1ca2a,
     type: 2}
   m_PrefabInternal: {fileID: 676863707}
---- !u!114 &2070890487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2070890481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 215eb25f2e5f6426ca013bdd35bf4d64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radLoadMax: 111
-  radLoadValue: 0
