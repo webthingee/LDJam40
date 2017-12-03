@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour {
     private float rescueValue;
 
 	public bool didWin;
-	public bool tookHit;
 
 	public GameObject player;
 	public GameObject startBtn;
@@ -41,16 +40,6 @@ public class GameManager : MonoBehaviour {
 	{
         radValue = player.GetComponent<HealthCtrl>().RadLoadValue;
         radValueText.text = Mathf.FloorToInt(radValue).ToString() + " / " + player.GetComponent<HealthCtrl>().RadLoadValueMax;
-		
-		if (tookHit || player.GetComponent<HealthCtrl>().RadSpeedValue > 1)
-		{
-            StartCoroutine(TookHitCooldown());
-			tookHit = false;
-		}
-		else
-        {
-            radValueText.color = Color.black;
-        }
     }
 
 	IEnumerator TookHitCooldown ()

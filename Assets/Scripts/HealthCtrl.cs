@@ -53,7 +53,11 @@ public class HealthCtrl : MonoBehaviour
         {
             radLoadValue = 0;
         }
-        GameObject.Find("Master Manager").GetComponent<GameManager>().tookHit = true;
+        
+        if (_value > 0)
+        {
+            StartCoroutine(radAddDamage());
+        }
     }
 
     public void RadsSpeed(float _value)
@@ -67,7 +71,10 @@ public class HealthCtrl : MonoBehaviour
         {
             radSpeed = radSpeedMax;
         }
-        GameObject.Find("Master Manager").GetComponent<GameManager>().tookHit = true;
+        if (radSpeed > 1)
+        {
+            StartCoroutine(radSpeedDamage()); 
+        }
     }
 
     void Update ()
@@ -98,6 +105,26 @@ public class HealthCtrl : MonoBehaviour
                 }
                 Destroy(this.gameObject);
             }
+        }
+    }
+
+    IEnumerator radAddDamage ()
+    {
+        radBarLevel.GetComponent<Image>().color = Color.red;
+        yield return new WaitForSeconds(0.20f);
+        radBarLevel.GetComponent<Image>().color = Color.green;
+    }
+
+    IEnumerator radSpeedDamage()
+    {
+        radBarLevel.GetComponent<Image>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        if (radSpeed > 1) {
+            StartCoroutine(radSpeedDamage());
+        }
+        else
+        {
+            radBarLevel.GetComponent<Image>().color = Color.green;
         }
     }
 }
