@@ -14,7 +14,8 @@ public class RescueAction : MonoBehaviour {
         Debug.Log(other.name + " hits " + this.name);
 
         GameObject.Find("Player").GetComponent<MissionCtrl>().AddRescue(1);
+        this.GetComponent<HealthCtrl>().takingRads = true;
 
-        Destroy(this.gameObject);
+        transform.position = new Vector2(-9999, -9999);
     }
 }

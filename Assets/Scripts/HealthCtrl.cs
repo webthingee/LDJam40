@@ -33,6 +33,8 @@ public class HealthCtrl : MonoBehaviour
 
     void Start()
     {
+        radBarLevel.transform.parent.gameObject.SetActive(true);
+        
         if (!isMainCharacter)
         {
             takingRads = false;
@@ -90,6 +92,10 @@ public class HealthCtrl : MonoBehaviour
             }
             else
             {
+                if (radBarLevelOverlay != null)
+                {
+                    radBarLevelOverlay.SetActive(true);
+                }
                 Destroy(this.gameObject);
             }
         }

@@ -5,21 +5,22 @@ using UnityEngine;
 public class MissionCtrl : MonoBehaviour 
 {
     // Rescue Value
-    [SerializeField] float rescueValueMax = 3;
-    [SerializeField] float rescueValue;
+    [SerializeField] int rescueValueMax = 0;
+    [SerializeField] int rescueValue;
+    [SerializeField] List<HealthCtrl> Ants = new List<HealthCtrl>();
 
-    public float RescueValueMax
+    public int RescueValueMax
     {
         get { return rescueValueMax; }
         set { rescueValueMax = value; }
     }
 
-    public float RescueValue
+    public int RescueValue
     {
         get { return rescueValue; }
         set { rescueValue = value; }
     }
-    public void AddRescue (float _value)
+    public void AddRescue (int _value)
     {
         rescueValue += _value;
         RescueValueCheck();
@@ -27,7 +28,17 @@ public class MissionCtrl : MonoBehaviour
 
     void Start()
     {
-		
+        rescueValueMax = 0;
+        GameObject gOAnts = GameObject.Find("Ants");
+        int i = 0;
+        while (i < gOAnts.transform.childCount)
+        {
+            if (gOAnts.transform.GetChild(i).gameObject.activeSelf)
+            {
+                rescueValueMax++;
+            }
+            i++;
+        }
     }
 
     void RescueValueCheck ()

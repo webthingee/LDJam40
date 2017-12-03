@@ -10,18 +10,6 @@ public class GameManager : MonoBehaviour {
     // Rad Value
     public Text radValueText;
     private float radValue;    
-	
-	// Rad Value 1
-    public Text radValueText1;
-    private float radValue1;
-
-    // Rad Value 2
-    public Text radValueText2;
-    private float radValue2;
-
-    // Rad Value 3
-    public Text radValueText3;
-    private float radValue3;
 
     // Rescue Value 4
     public Text rescueValueText;
@@ -33,11 +21,6 @@ public class GameManager : MonoBehaviour {
 	public GameObject player;
 	public GameObject startBtn;
 	public GameObject overlay;
-	
-	void Awake ()
-	{
-
-    }
 
 	void Start ()
 	{
