@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour {
 
 	public void GameReload ()
 	{
-		SceneManager.LoadScene("Demo");
+		SceneManager.LoadScene("Level001");
 	}
 
     public void ButtonReStart()
