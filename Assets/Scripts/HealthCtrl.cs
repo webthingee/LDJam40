@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthCtrl : MonoBehaviour 
 {
     // Rad Load
-    [SerializeField] float radLoadMax;
+    [SerializeField] float radLoadMax = 100;
     [SerializeField] float radSpeedMax = 5;
     [SerializeField] float radSpeedMin = 1;
     [SerializeField] float radSpeed = 1;
     [SerializeField] float radLoadValue = 0;
     public bool isMainCharacter;
+    public Transform radBarLevel;
 
     GameManager gm;
 
@@ -56,6 +58,9 @@ public class HealthCtrl : MonoBehaviour
     void Update ()
     {
         radLoadValue += Time.deltaTime * radSpeed;
+        float radPercent = ((float)Mathf.FloorToInt(radLoadValue) / 100); // max then * 10? to get %
+        radBarLevel.GetComponent<Image>().fillAmount = radPercent;
+
         if (radLoadValue >= radLoadMax)
         {
             if (isMainCharacter)
