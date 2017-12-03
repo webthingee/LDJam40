@@ -12,7 +12,9 @@ public class HealthCtrl : MonoBehaviour
     [SerializeField] float radSpeed = 1;
     [SerializeField] float radLoadValue = 0;
     public bool isMainCharacter;
+    public bool takingRads = true;
     public Transform radBarLevel;
+    public GameObject radBarLevelOverlay;
 
     GameManager gm;
 
@@ -29,9 +31,24 @@ public class HealthCtrl : MonoBehaviour
         set { radSpeed = value; }
     }
 
-    public void AddRads (float _value) {
+    void Start()
+    {
+        if (!isMainCharacter)
+        {
+            takingRads = false;
+
+            if (radBarLevelOverlay != null) 
+            {
+                radBarLevelOverlay.SetActive(true);
+            }
+        }
+    }
+
+    public void AddRads(float _value)
+    {
         radLoadValue += _value;
-        if (radLoadValue < 0) { 
+        if (radLoadValue < 0)
+        {
             radLoadValue = 0;
         }
         GameObject.Find("Master Manager").GetComponent<GameManager>().tookHit = true;
@@ -51,15 +68,18 @@ public class HealthCtrl : MonoBehaviour
         GameObject.Find("Master Manager").GetComponent<GameManager>().tookHit = true;
     }
 
-    void Start ()
-    {
-    }
-
     void Update ()
     {
-        radLoadValue += Time.deltaTime * radSpeed;
-        float radPercent = ((float)Mathf.FloorToInt(radLoadValue) / 100); // max then * 10? to get %
-        radBarLevel.GetComponent<Image>().fillAmount = radPercent;
+        if (takingRads)
+        {
+            if (radBarLevelOverlay != null)
+            { 
+                radBarLevelOverlay.SetActive(false);
+            }
+            radLoadValue += Time.deltaTime * radSpeed;
+            float radPercent = ((float)Mathf.FloorToInt(radLoadValue) / 100); // max then * 10? to get %
+            radBarLevel.GetComponent<Image>().fillAmount = radPercent;
+        }
 
         if (radLoadValue >= radLoadMax)
         {

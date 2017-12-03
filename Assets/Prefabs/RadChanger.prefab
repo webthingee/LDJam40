@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 61278376372967796}
   - component: {fileID: 114204669884876476}
   m_Layer: 0
-  m_Name: Health
+  m_Name: RadChanger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

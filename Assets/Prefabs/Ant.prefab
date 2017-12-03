@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 4539883962122546}
   - component: {fileID: 114429691978334944}
   - component: {fileID: 61240895877051820}
+  - component: {fileID: 114756440472009020}
   m_Layer: 0
   m_Name: Ant
   m_TagString: Untagged
@@ -155,6 +156,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102687a53dc6c4645870210ae93cf5eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114756440472009020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756915550220816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215eb25f2e5f6426ca013bdd35bf4d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radLoadMax: 100
+  radSpeedMax: 5
+  radSpeedMin: 1
+  radSpeed: 1
+  radLoadValue: 0
+  isMainCharacter: 0
+  takingRads: 0
+  radBarLevel: {fileID: 0}
+  radBarLevelOverlay: {fileID: 0}
 --- !u!212 &212260025812982492
 SpriteRenderer:
   m_ObjectHideFlags: 1
