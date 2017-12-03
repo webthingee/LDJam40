@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Animations;
 using Prime31;
 
 public class PlayerCtrl : MonoBehaviour 
@@ -13,10 +14,6 @@ public class PlayerCtrl : MonoBehaviour
 
 	[SerializeField] bool isGrounded;
 	[SerializeField] bool isJumping;
-
-	// public LayerMask layerMask;
-	// public float slopeSlideSpeed = 4f;
-	// [SerializeField] bool isSlopeSliding;
 
 	[Header("Ability: Double Jump")]
 	public bool canDoubleJump;
@@ -41,47 +38,20 @@ public class PlayerCtrl : MonoBehaviour
  	CharacterController2D charCtrl2D;
 	float slopeAngle;
 	Vector3 slopeGradient;
+	public Animator anim;
 
     void Awake ()
     {
 		charCtrl2D = GetComponent<CharacterController2D>();
     }
-
-	void DebugPane ()
-	{
-        if (GameObject.Find("Dbl Jump").GetComponent<Toggle>().isOn)
-        {
-            canDoubleJump = true;
-        } else {
-			canDoubleJump = false;
-		}
-	}
 	
 	void Update () 
 	{
-		//DebugPane();
-
 		if (!hasWallJumped)
 		{
 			moveDirection.x = Input.GetAxis("Horizontal");
 			moveDirection.x *= walkSpeed; // multiply by walkspeed
 		}
-
-		// RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector3.up, 2f, layerMask);
-		// if (hit)
-		// {
-		// 	slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
-		// 	slopeGradient = hit.normal;
-
-		// 	if (slopeAngle > charCtrl2D.slopeLimit)
-		// 	{
-		// 		isSlopeSliding = true;
-		// 	} 
-		// 	else
-		// 	{
-		// 		isSlopeSliding = false;
-		// 	}
-		// }
 
 		if (isGrounded)
 		{
@@ -91,10 +61,7 @@ public class PlayerCtrl : MonoBehaviour
 			isJumping = false;
 			hasDoubleJumped = false;
 
-			// if (isSlopeSliding)
-			// {
-			// 	moveDirection = new Vector3 (slopeGradient.x * slopeSlideSpeed, -slopeGradient.y * slopeSlideSpeed, 0);
-			// }
+			anim.SetFloat("Running", Mathf.Abs(moveDirection.x));
 
 			// jump management
 			if (Input.GetButtonDown("Jump"))
