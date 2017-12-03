@@ -14,9 +14,9 @@ public class PlayerCtrl : MonoBehaviour
 	[SerializeField] bool isGrounded;
 	[SerializeField] bool isJumping;
 
-	public LayerMask layerMask;
-	public float slopeSlideSpeed = 4f;
-	[SerializeField] bool isSlopeSliding;
+	// public LayerMask layerMask;
+	// public float slopeSlideSpeed = 4f;
+	// [SerializeField] bool isSlopeSliding;
 
 	[Header("Ability: Double Jump")]
 	public bool canDoubleJump;
@@ -67,21 +67,21 @@ public class PlayerCtrl : MonoBehaviour
 			moveDirection.x *= walkSpeed; // multiply by walkspeed
 		}
 
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector3.up, 2f, layerMask);
-		if (hit)
-		{
-			slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
-			slopeGradient = hit.normal;
+		// RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector3.up, 2f, layerMask);
+		// if (hit)
+		// {
+		// 	slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
+		// 	slopeGradient = hit.normal;
 
-			if (slopeAngle > charCtrl2D.slopeLimit)
-			{
-				isSlopeSliding = true;
-			} 
-			else
-			{
-				isSlopeSliding = false;
-			}
-		}
+		// 	if (slopeAngle > charCtrl2D.slopeLimit)
+		// 	{
+		// 		isSlopeSliding = true;
+		// 	} 
+		// 	else
+		// 	{
+		// 		isSlopeSliding = false;
+		// 	}
+		// }
 
 		if (isGrounded)
 		{
@@ -91,10 +91,10 @@ public class PlayerCtrl : MonoBehaviour
 			isJumping = false;
 			hasDoubleJumped = false;
 
-			if (isSlopeSliding)
-			{
-				moveDirection = new Vector3 (slopeGradient.x * slopeSlideSpeed, -slopeGradient.y * slopeSlideSpeed, 0);
-			}
+			// if (isSlopeSliding)
+			// {
+			// 	moveDirection = new Vector3 (slopeGradient.x * slopeSlideSpeed, -slopeGradient.y * slopeSlideSpeed, 0);
+			// }
 
 			// jump management
 			if (Input.GetButtonDown("Jump"))
