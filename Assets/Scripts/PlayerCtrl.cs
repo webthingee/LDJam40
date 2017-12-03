@@ -10,8 +10,13 @@ public class PlayerCtrl : MonoBehaviour
 	public float walkSpeed = 6f;
 	public float jumpSpeed = 8f;
 	public float gravity = 20f;
+
 	[SerializeField] bool isGrounded;
 	[SerializeField] bool isJumping;
+
+	public LayerMask layerMask;
+	public float slopeSlideSpeed = 4f;
+	[SerializeField] bool isSlopeSliding;
 
 	[Header("Ability: Double Jump")]
 	public bool canDoubleJump;
@@ -34,6 +39,8 @@ public class PlayerCtrl : MonoBehaviour
 	Vector3 moveDirection = Vector3.zero;
 	CharacterController2D.CharacterCollisionState2D flags;
  	CharacterController2D charCtrl2D;
+	float slopeAngle;
+	Vector3 slopeGradient;
 
     void Awake ()
     {
@@ -60,6 +67,22 @@ public class PlayerCtrl : MonoBehaviour
 			moveDirection.x *= walkSpeed; // multiply by walkspeed
 		}
 
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector3.up, 2f, layerMask);
+		if (hit)
+		{
+			slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
+			slopeGradient = hit.normal;
+
+			if (slopeAngle > charCtrl2D.slopeLimit)
+			{
+				isSlopeSliding = true;
+			} 
+			else
+			{
+				isSlopeSliding = false;
+			}
+		}
+
 		if (isGrounded)
 		{
 			// is on the ground
@@ -67,6 +90,11 @@ public class PlayerCtrl : MonoBehaviour
 			
 			isJumping = false;
 			hasDoubleJumped = false;
+
+			if (isSlopeSliding)
+			{
+				moveDirection = new Vector3 (slopeGradient.x * slopeSlideSpeed, -slopeGradient.y * slopeSlideSpeed, 0);
+			}
 
 			// jump management
 			if (Input.GetButtonDown("Jump"))
@@ -103,9 +131,9 @@ public class PlayerCtrl : MonoBehaviour
         if (moveDirection.x < 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
-        } 
-		else if (moveDirection.x > 0)
-		{
+        }
+        else if (moveDirection.x > 0)
+        {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
