@@ -6,6 +6,7 @@ public class SpawnCtrl : MonoBehaviour {
 
 	public GameObject prefab;
 	public float timeBetween;
+	public Transform dropSpot;
 	
 	void Start () 
 	{
@@ -15,7 +16,7 @@ public class SpawnCtrl : MonoBehaviour {
 	IEnumerator SpawnPrefab (float _value)
 	{
         yield return new WaitForSeconds(_value);
-        Instantiate(prefab, transform.position, transform.rotation);
+        Instantiate(prefab, dropSpot.position, dropSpot.rotation);
 		StartCoroutine(SpawnPrefab(_value));
 	}
 }
