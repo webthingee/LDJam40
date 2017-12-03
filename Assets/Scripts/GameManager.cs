@@ -23,11 +23,8 @@ public class GameManager : MonoBehaviour {
 
 	void Start ()
 	{
-		overlay.SetActive(false);
-        overlay.transform.GetChild(0).gameObject.SetActive(false);
-        overlay.transform.GetChild(1).gameObject.SetActive(false);
-
-        GameStop();
+		GameInitialize();
+		ScreenStart();
 	}
 
 	void Update () 
@@ -54,40 +51,43 @@ public class GameManager : MonoBehaviour {
         rescueValueText.text = Mathf.FloorToInt(rescueValue).ToString() + " / " + player.GetComponent<MissionCtrl>().RescueValueMax;
     }
 
-	public void GameStop () 
+	public void ScreenStart () 
 	{
 		overlay.SetActive(true);
         overlay.transform.GetChild(0).gameObject.SetActive(true); // start
         
 		Time.timeScale = 0;
 	}
+    
+	public void ScreenWin ()
+    {
+        overlay.SetActive(true);
+        overlay.transform.GetChild(1).gameObject.SetActive(true); // win
 
-	public void GameStart () 
+        Time.timeScale = 0f;
+    }
+
+    public void ScreenDead ()
+    {
+        overlay.SetActive(true);
+        overlay.transform.GetChild(2).gameObject.SetActive(true); // dead
+
+        Time.timeScale = 0;
+    }
+
+	public void GameInitialize () 
 	{
 		Time.timeScale = 1;
 		
 		overlay.SetActive(false);
-        overlay.transform.GetChild(1).gameObject.SetActive(false);
         overlay.transform.GetChild(0).gameObject.SetActive(false);
-
-        player.GetComponent<MissionCtrl>().RescueValue = 0;
+        overlay.transform.GetChild(1).gameObject.SetActive(false);
+        overlay.transform.GetChild(2).gameObject.SetActive(false);
 	}
-	
-	public void GameWin ()
-	{
-		overlay.SetActive(true);
-		overlay.transform.GetChild(1).gameObject.SetActive(true); // win
-		
-		Time.timeScale = 0f;
-    }
 
 	public void GameReload ()
 	{
 		SceneManager.LoadScene("Level001");
 	}
 
-    public void ButtonReStart()
-    {
-        GameStart();
-    }
 }

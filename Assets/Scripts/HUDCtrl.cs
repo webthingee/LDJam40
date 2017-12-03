@@ -10,21 +10,21 @@ public class HUDCtrl : MonoBehaviour {
 	{
 		gm = GameObject.Find("Master Manager").GetComponent<GameManager>();
 	}
-	void Start () 
-	{
-		
-	}
 	
-	void Update () 
+	void Update () // after the screen is presented.
 	{		
 		if (Input.anyKeyDown && gm.overlay.transform.GetChild(0).gameObject.activeSelf) // start
 		{
-			gm.GameStart();
+			gm.GameInitialize();
 		}
 
         if (Input.anyKeyDown && gm.overlay.transform.GetChild(1).gameObject.activeSelf) // win
         {
 			gm.GameReload();
+        }
+        if (Input.anyKeyDown && gm.overlay.transform.GetChild(2).gameObject.activeSelf) // dean
+        {
+            gm.GameReload();
         }
     }
 }

@@ -94,8 +94,7 @@ public class HealthCtrl : MonoBehaviour
         {
             if (isMainCharacter)
             {
-                Debug.Log("DEAD");
-                GameObject.Find("Master Manager").GetComponent<GameManager>().GameReload();
+                GameObject.Find("Master Manager").GetComponent<GameManager>().ScreenDead();
             }
             else
             {
