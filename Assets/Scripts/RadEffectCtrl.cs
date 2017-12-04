@@ -16,9 +16,7 @@ public class RadEffectCtrl : MonoBehaviour
     }
 
 	void OnTriggerEnter2D(Collider2D other)
-	{
-		Debug.Log(other.name + " hits " + this.name);
-	
+	{	
         if (canDrainRads)
         {
             DrainRads(5);
