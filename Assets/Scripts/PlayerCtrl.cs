@@ -39,10 +39,12 @@ public class PlayerCtrl : MonoBehaviour
 	float slopeAngle;
 	Vector3 slopeGradient;
 	public Animator anim;
+	AudioSource sound;
 
     void Awake ()
     {
 		charCtrl2D = GetComponent<CharacterController2D>();
+		sound = GetComponent<AudioSource>();
     }
 	
 	void Update () 
@@ -69,6 +71,7 @@ public class PlayerCtrl : MonoBehaviour
 			if (Input.GetButtonDown("Jump"))
 			{
                 anim.SetBool("isJumping", true);
+				sound.Play();
                 moveDirection.y = jumpSpeed;
 				isJumping = true;
 

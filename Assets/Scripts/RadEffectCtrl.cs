@@ -9,32 +9,42 @@ public class RadEffectCtrl : MonoBehaviour
 	public bool canDrainRads;
 
 	HealthCtrl hc;
+	AudioSource sound;
 
-	void Start()
+    void Start()
 	{
 		hc = GameObject.Find("Player").GetComponent<HealthCtrl>();
+		if (GetComponent<AudioSource>() != null)
+		{
+			sound = GetComponent<AudioSource>();
+		}
     }
 
 	void OnTriggerEnter2D(Collider2D other)
-	{	
-        if (canDrainRads)
+	{
+        if (GetComponent<AudioSource>() != null)
         {
-            DrainRads(5);
+            sound.Play();
+        }
+        
+		if (canDrainRads)
+        {
+            DrainRads(radChange);
         }
 		else
-		{
+		{   
 			AddRads(radChange);
 		}
 
 		if (isConsumable)
 		{
-			Destroy(this.gameObject);
+			GetComponent<SpriteRenderer>().enabled = false;
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D other)
 	{
-		hc.RadsSpeed(0);
+		hc.RadsSpeed(1);
 	}
 
 	void AddRads (int _value)

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class RescueAction : MonoBehaviour {
 
-    void Start()
-    {
+    AudioSource sound;
 
+    void Start ()
+    {
+        sound = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name + " hits " + this.name);
-
+        sound.Play();
+        
         GameObject.Find("Player").GetComponent<MissionCtrl>().AddRescue(1);
         this.GetComponent<HealthCtrl>().takingRads = true;
 
