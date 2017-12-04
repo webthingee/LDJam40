@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridCtrl : MonoBehaviour {
 
 	public int xSize, ySize;
+	public int spacing = 12;
 	public GameObject tile;
 	
 	void Start () 
@@ -21,11 +22,11 @@ public class GridCtrl : MonoBehaviour {
                 //var vertices[i] = new Vector2(x, y);
 				if (x % 2 == 0 && y % 2 != 0)
 				{
-					Instantiate(tile, new Vector2(transform.position.x + (x * 10), transform.position.y + (y * 10)), transform.rotation, transform);
+					Instantiate(tile, new Vector2(transform.position.x + (x * spacing), transform.position.y + (y * spacing)), transform.rotation, transform);
 				}
 				else if(x % 2 != 0 && y % 2 == 0)
 				{
-                    Instantiate(tile, new Vector2(transform.position.x + (x * 10), transform.position.y + (y * 10)), transform.rotation, transform);
+                    Instantiate(tile, new Vector2(transform.position.x + (x * spacing), transform.position.y + (y * spacing)), transform.rotation, transform);
                 }
             }
         }
