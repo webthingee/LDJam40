@@ -6,9 +6,11 @@ public class RadEffectCtrl : MonoBehaviour
 {
 	public int radChange = -10;
 	public bool isConsumable;
-	public bool canDrainRads;
+    public bool canDrainRads;
+    public bool isCloud;
+    public bool isSludge;
 
-	HealthCtrl hc;
+    HealthCtrl hc;
 	AudioSource sound;
 
     void Start()
@@ -39,6 +41,7 @@ public class RadEffectCtrl : MonoBehaviour
 		if (isConsumable)
 		{
 			GetComponent<SpriteRenderer>().enabled = false;
+			StartCoroutine(ByeBye());
 		}
 	}
 
@@ -55,6 +58,11 @@ public class RadEffectCtrl : MonoBehaviour
     void DrainRads(int _value)
     {
         GameObject.Find("Player").GetComponent<HealthCtrl>().RadsSpeed(_value);
-    }	
-	
+    }
+
+	IEnumerator ByeBye ()
+	{
+		yield return new WaitForSeconds(2f);
+		Destroy(this.gameObject);
+	}		
 }
