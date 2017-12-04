@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
 	public GameObject startBtn;
 	public GameObject overlay;
 
+	public GameObject musicManager;
+
 	void Start ()
 	{
 		GameInitialize();
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour {
 
 	public void ScreenStart () 
 	{
+		musicManager.SetActive(false);
 		overlay.SetActive(true);
         overlay.transform.GetChild(0).gameObject.SetActive(true); // start
         
@@ -61,7 +64,8 @@ public class GameManager : MonoBehaviour {
     
 	public void ScreenWin ()
     {
-        overlay.SetActive(true);
+        musicManager.SetActive(false);
+		overlay.SetActive(true);
         overlay.transform.GetChild(1).gameObject.SetActive(true); // win
 
         Time.timeScale = 0f;
@@ -69,7 +73,8 @@ public class GameManager : MonoBehaviour {
 
     public void ScreenDead ()
     {
-        overlay.SetActive(true);
+        musicManager.SetActive(false);
+		overlay.SetActive(true);
         overlay.transform.GetChild(2).gameObject.SetActive(true); // dead
 
         Time.timeScale = 0;
@@ -83,6 +88,7 @@ public class GameManager : MonoBehaviour {
         overlay.transform.GetChild(0).gameObject.SetActive(false);
         overlay.transform.GetChild(1).gameObject.SetActive(false);
         overlay.transform.GetChild(2).gameObject.SetActive(false);
+		musicManager.SetActive(true);
 	}
 
 	public void GameReload ()
