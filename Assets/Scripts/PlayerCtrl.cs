@@ -55,6 +55,8 @@ public class PlayerCtrl : MonoBehaviour
 
 		if (isGrounded)
 		{
+			anim.SetBool("isJumping", false);
+			
 			// is on the ground
 			moveDirection.y = 0;
 			
@@ -66,7 +68,8 @@ public class PlayerCtrl : MonoBehaviour
 			// jump management
 			if (Input.GetButtonDown("Jump"))
 			{
-				moveDirection.y = jumpSpeed;
+                anim.SetBool("isJumping", true);
+                moveDirection.y = jumpSpeed;
 				isJumping = true;
 
 				isWallRunning = true;
