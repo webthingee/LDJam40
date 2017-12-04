@@ -7,7 +7,7 @@ public class MissionCtrl : MonoBehaviour
     // Rescue Value
     [SerializeField] int rescueValueMax = 0;
     [SerializeField] int rescueValue;
-    [SerializeField] List<HealthCtrl> Ants = new List<HealthCtrl>();
+    //[SerializeField] List<HealthCtrl> Ants = new List<HealthCtrl>();
 
     public int RescueValueMax
     {
@@ -45,12 +45,7 @@ public class MissionCtrl : MonoBehaviour
     {
         if (rescueValue >= rescueValueMax)
         {
-            Debug.Log("Rescue Value WIN");
 			GameObject.Find("Master Manager").GetComponent<GameManager>().ScreenWin();        
-		}
-		else
-		{
-			Debug.Log("More to rescue!");
 		}
     }
 }

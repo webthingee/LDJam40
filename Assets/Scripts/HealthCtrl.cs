@@ -55,8 +55,15 @@ public class HealthCtrl : MonoBehaviour
         }
         
         if (_value > 0)
-        {
+        {   
             StartCoroutine(radAddDamage());
+        }
+        else
+        {
+            if (isMainCharacter)
+            {
+                DistributeRads(_value);
+            }
         }
     }
 
@@ -104,6 +111,21 @@ public class HealthCtrl : MonoBehaviour
                 }
                 Destroy(this.gameObject);
             }
+        }
+    }
+
+    void DistributeRads (float _value)
+    {
+        GameObject gOAnts = GameObject.Find("Ants");
+        Debug.Log("x");
+        int i = 0;
+        while (i < gOAnts.transform.childCount)
+        {
+            if (gOAnts.transform.GetChild(i).gameObject.activeSelf)
+            {
+                gOAnts.transform.GetChild(i).gameObject.GetComponent<HealthCtrl>().AddRads(_value);
+            }
+            i++;
         }
     }
 
