@@ -117,7 +117,6 @@ public class HealthCtrl : MonoBehaviour
     void DistributeRads (float _value)
     {
         GameObject gOAnts = GameObject.Find("Ants");
-        Debug.Log("x");
         int i = 0;
         while (i < gOAnts.transform.childCount)
         {

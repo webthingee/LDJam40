@@ -25,7 +25,7 @@ public class PlayerCtrl : MonoBehaviour
 	public Vector2 wallJumpAmount = new Vector2(0.5f, 0.5f);
 	public float wallJumpWait = 0.5f;
 	[SerializeField] bool hasWallJumped;
-	[SerializeField] bool lastJumpWasLeft;
+	//[SerializeField] bool lastJumpWasLeft;
 
     [Header("Ability: Wall Run")]	
 	public bool canWallRun;
@@ -149,14 +149,14 @@ public class PlayerCtrl : MonoBehaviour
 						moveDirection.x = jumpSpeed * wallJumpAmount.x;
 						moveDirection.y = jumpSpeed * wallJumpAmount.y;
 						transform.eulerAngles = new Vector3(0, 0, 0);
-						lastJumpWasLeft = false;
+						//lastJumpWasLeft = false;
 					} 
 					else if (moveDirection.x > 0)
 					{
 						moveDirection.x = -jumpSpeed * wallJumpAmount.x;
 						moveDirection.y = jumpSpeed * wallJumpAmount.y;
 						transform.eulerAngles = new Vector3(0, 180, 0);
-						lastJumpWasLeft = true;
+						//lastJumpWasLeft = true;
 					}
 
 					StartCoroutine(HasWallJumpedTimer(wallJumpWait));

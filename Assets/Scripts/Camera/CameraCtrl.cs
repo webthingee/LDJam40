@@ -55,7 +55,6 @@ public class CameraCtrl : MonoBehaviour {
     {
         if (player.transform.position.y <= mainCamera.position.y + -10)
         {
-            Debug.Log("DEAD");
             GameObject.Find("Master Manager").GetComponent<GameManager>().GameReload();
         }
     }
